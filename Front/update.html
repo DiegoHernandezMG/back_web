@@ -48,11 +48,32 @@
         <input type="text" id="acompaniante" name="acompaniante">
         <br>
 
-        <button type="submit">Actualizar Usuario</button>
+        <button type="button" id="updateUserButton">Actualizar Usuario</button>
     </form>
 
     <!-- Script para realizar la llamada a la API de actualización -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#updateUserButton").click(function() {
+                // Obtener los datos del formulario
+                var formData = $("#updateUserForm").serialize();
+
+                // Realizar una solicitud PUT
+                $.ajax({
+                    url: "http://localhost/backend/Update_api.php",
+                    type: "PUT",
+                    data: formData,
+                    success: function(response) {
+                        alert(response.message); // Muestra un mensaje de éxito o error
+                    },
+                    error: function() {
+                        alert("Error al actualizar el usuario.");
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>

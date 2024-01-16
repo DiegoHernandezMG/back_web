@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Creación de Usuario</title>
 </head>
-
 <body>
     <h1>Formulario de Creación de Usuario</h1>
-
-    <!-- Formulario para ingresar un nuevo usuario -->
-    <form id="createUserForm" method="POST" action="http://localhost/backend/Create_api.php">
+    <form id="createUserForm">
+        
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" required>
         <br>
@@ -43,12 +40,41 @@
         <label for="acompaniante">Acompañante:</label>
         <input type="text" id="acompaniante" name="acompaniante">
         <br>
-
+    
         <button type="submit">Crear Usuario</button>
     </form>
 
-    <!-- Script para realizar la llamada a la API de creación -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-</body>
+    <script>
+        $('#createUserForm').on('submit', function(e) {
+            e.preventDefault();
 
+            // Recolectar los datos del formulario
+            var formData = {
+                nombre: $('#nombre').val(),
+                dependencia: $('#dependencia').val(),
+                distincion: $('#distincion').val(),
+                categoria: $('#categoria').val(),
+                curp: $('#curp').val(),
+                asistencia: $('#asistencia').val(),
+                asistenciaA: $('#asistenciaA').val(),
+                acompaniante: $('#acompaniante').val(),
+            };
+
+            // Enviar los datos en formato JSON
+            $.ajax({
+                url: 'http://localhost/backend/Create_api.php',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(formData),
+                success: function(response) {
+                    alert(response.message);
+                },
+                error: function(xhr, status, error) {
+                    alert('Error al crear el usuario: ' + error);
+                }
+            });
+        })
+    </script>
+</body>
 </html>
