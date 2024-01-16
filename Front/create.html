@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Creación de Usuario</title>
+</head>
+
+<body>
+    <h1>Formulario de Creación de Usuario</h1>
+
+    <!-- Formulario para ingresar un nuevo usuario -->
+    <form id="createUserForm" method="POST" action="http://localhost/backend/Create_api.php">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+        <br>
+
+        <label for="dependencia">Dependencia:</label>
+        <input type="text" id="dependencia" name="dependencia" required>
+        <br>
+
+        <label for="distincion">Distincion:</label>
+        <input type="text" id="distincion" name="distincion" required>
+        <br>
+
+        <label for="categoria">Categoria:</label>
+        <input type="text" id="categoria" name="categoria" required>
+        <br>
+
+        <label for="curp">CURP:</label>
+        <input type="text" id="curp" name="curp" required>
+        <br>
+
+        <label for="asistencia">Asistencia:</label>
+        <input type="text" id="asistencia" name="asistencia" required>
+        <br>
+
+        <label for="asistenciaAcompaniante">Asistencia Acompañante:</label>
+        <input type="text" id="asistenciaAcompaniante" name="asistenciaAcompaniante" required>
+        <br>
+
+        <label for="acompaniante">Acompañante:</label>
+        <input type="text" id="acompaniante" name="acompaniante">
+        <br>
+
+        <button type="submit">Crear Usuario</button>
+    </form>
+
+    <!-- Script para realizar la llamada a la API de creación -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Eliminación de Usuario</title>
+</head>
+
+<body>
+    <h1>Formulario de Eliminación de Usuario</h1>
+
+    <!-- Formulario para eliminar un usuario -->
+    <form id="deleteUserForm" action="http://localhost/backend/delete_api.php" method="POST">
+        <label for="nombre">Nombre del Usuario a Eliminar:</label>
+        <input type="text" id="nombre" name="nombre" required>
+        <br>
+        <button type="submit">Eliminar Usuario</button>
+    </form>
+
+    <!-- Script para realizar la llamada a la API de eliminación -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</body>
+
+</html>

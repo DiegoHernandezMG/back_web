@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Actualización de Usuario</title>
+</head>
+
+<body>
+    <h1>Formulario de Actualización de Usuario</h1>
+
+    <!-- Formulario para actualizar un usuario -->
+    <form id="updateUserForm" method="POST" action="http://localhost/backend/Update_api.php">
+        <label for="id">ID del Usuario:</label>
+        <input type="text" id="id" name="id" required>
+        <br>
+
+        <label for="nombre">Nuevo Nombre:</label>
+        <input type="text" id="nombre" name="nombre">
+        <br>
+
+        <label for="dependencia">Nueva Dependencia:</label>
+        <input type="text" id="dependencia" name="dependencia">
+        <br>
+
+        <label for="distincion">Nueva Distincion:</label>
+        <input type="text" id="distincion" name="distincion">
+        <br>
+
+        <label for="categoria">Nueva Categoria:</label>
+        <input type="text" id="categoria" name="categoria">
+        <br>
+
+        <label for="curp">Nueva CURP:</label>
+        <input type="text" id="curp" name="curp">
+        <br>
+
+        <label for="asistencia">Nueva Asistencia:</label>
+        <input type="text" id="asistencia" name="asistencia">
+        <br>
+
+        <label for="asistenciaAcompaniante">Nueva Asistencia Acompañante:</label>
+        <input type="text" id="asistenciaAcompaniante" name="asistenciaAcompaniante">
+        <br>
+
+        <label for="acompaniante">Nuevo Acompañante:</label>
+        <input type="text" id="acompaniante" name="acompaniante">
+        <br>
+
+        <button type="submit">Actualizar Usuario</button>
+    </form>
+
+    <!-- Script para realizar la llamada a la API de actualización -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</body>
+
+</html>

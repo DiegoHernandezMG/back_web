@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Verificación de Usuario por CURP</title>
+</head>
+
+<body>
+    <h1>Formulario de Verificación de Usuario por CURP</h1>
+
+    <!-- Formulario para verificar un usuario por CURP -->
+    <form id="verifyUserForm" action="http://localhost/backend/curp_api.php" method="POST">
+        <label for="curp">Ingrese el CURP del Usuario:</label>
+        <input type="text" id="curp" name="curp" required>
+        <br>
+
+        <button type="submit">Verificar Usuario</button>
+    </form>
+
+    <!-- Script para realizar la llamada a la API de verificación -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario para Mostrar Datos de Usuario</title>
+</head>
+
+<body>
+    <h1>Formulario para Mostrar Datos de Usuario</h1>
+
+    <!-- Formulario para mostrar datos de un usuario por ID -->
+    <form id="readUserForm" action="http://localhost/backend/read_api.php" method="POST">
+        <label for="userId">Ingrese el ID del Usuario:</label>
+        <input type="text" id="userId" name="userId" required>
+        <br>
+
+        <button type="submit">Mostrar Datos</button>
+    </form>
+
+    <!-- Div para mostrar los datos -->
+    <div id="datosUsuario"></div>
+</body>
+
+</html>
