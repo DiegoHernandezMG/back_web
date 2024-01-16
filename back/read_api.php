@@ -7,11 +7,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $userId = $_POST["userId"];
 
     // Preparar la consulta SQL con JOIN
-    $sql = "SELECT u.*, d.DEPENDENCIA, di.DISTINCION, c.CATEGORIA
+    $sql = "SELECT u.*, d.DEPENDENCIA, di.DISTINCION, c.CATEGORIA, a.NOMBRE_ACOMPANIANTE
             FROM usuarios u
             LEFT JOIN dependencia d ON u.DEPENDENCIA = d.ID_DEPENDENCIA
             LEFT JOIN distincion di ON u.DISTINCION = di.ID_DISTINCION
             LEFT JOIN categoria c ON u.CATEGORIA = c.ID_CATEGORIA
+            LEFT JOIN acompaniante a ON u.ACOMPANIANTE = a.ID_ACOMPANIANTE
             WHERE u.ID = ?";
     
     // Preparar la declaración
