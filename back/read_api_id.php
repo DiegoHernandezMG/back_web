@@ -1,5 +1,9 @@
 <?php
 $mysqli = include_once "conexion.php";
+header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+header("Allow: GET, POST, OPTIONS, PUT, DELETE");
 
 // Verificar si el ID del usuario se ha pasado a través de la URL
 if (isset($_GET["id"])) {
