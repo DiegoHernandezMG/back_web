@@ -5,12 +5,11 @@ header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Conte
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
 header("Allow: GET, POST, OPTIONS, PUT, DELETE");
 
-$sql = "SELECT u.*, d.DEPENDENCIA, di.DISTINCION, c.CATEGORIA, a.NOMBRE_ACOMPANIANTE
+$sql = "SELECT u.*, d.DEPENDENCIA, di.DISTINCION, c.CATEGORIA
         FROM usuarios u
         LEFT JOIN dependencia d ON u.DEPENDENCIA = d.ID_DEPENDENCIA
         LEFT JOIN distincion di ON u.DISTINCION = di.ID_DISTINCION
-        LEFT JOIN categoria c ON u.CATEGORIA = c.ID_CATEGORIA
-        LEFT JOIN acompaniante a ON u.ACOMPANIANTE = a.ID_ACOMPANIANTE";
+        LEFT JOIN categoria c ON u.CATEGORIA = c.ID_CATEGORIA";
 
 $result = $mysqli->query($sql);
 

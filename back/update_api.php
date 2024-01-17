@@ -18,6 +18,8 @@ if ($_SERVER["REQUEST_METHOD"] === "PUT") {
     $curp = $data["curp"];
     $asistencia = $data["asistencia"];
     $asistenciaAcompaniante = $data["asistenciaAcompaniante"];
+    $nombreA = $data["nombreAcompaniante"];
+    $implemento = $data["implemento"];
 
     // Consulta SQL para verificar si el ID existe
     $checkIdSql = "SELECT COUNT(*) FROM usuarios WHERE ID=?";
@@ -43,9 +45,9 @@ if ($_SERVER["REQUEST_METHOD"] === "PUT") {
             echo json_encode(["success" => false, "message" => "El CURP ya existe en otro usuario"]);
         } else {
             // El CURP es único, procede con la actualización
-            $updateSql = "UPDATE usuarios SET NOMBRE=?, DEPENDENCIA=?, DISTINCION=?, CATEGORIA=?, CURP=?, ASISTENCIA=?, ASISTENCIA_ACOMPANIANTE=? WHERE ID=?";
-            $stmt = $mysqli->prepare($updateSql);
-            $stmt->bind_param("siiisiii", $nombre, $dependencia, $distincion, $categoria, $curp, $asistencia, $asistenciaAcompaniante, $id);
+            $updateSql = "UPDATE usuarios SET NOMBRE=?, DEPENDENCIA=?, DISTINCION=?, CATEGORIA=?, CURP=?, ASISTENCIA=?, ASISTENCIA_ACOMPANIANTE=?, NOMBRE_ACOMPANIANTE=?, IMPLEMENTO=? WHERE ID=?";
+            $stmt = $mysqli->prepare($updateSql);   
+            $stmt->bind_param("siiisiissi", $nombre, $dependencia, $distincion, $categoria, $curp, $asistencia, $asistenciaAcompaniante, $nombreA, $implemento, $id);
 
             if ($stmt->execute()) {
                 // Actualización exitosa

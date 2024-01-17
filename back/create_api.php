@@ -17,6 +17,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $curp = $data["curp"];
     $asistencia = $data["asistencia"];
     $asistenciaA = $data["asistenciaAcompaniante"];
+    $nombreA = $data["nombreAcompaniante"];
+    $implemento = $data["implemento"];
 
     // Verificar si el CURP ya existe en la tabla
     $verificar_sql = "SELECT COUNT(*) FROM usuarios WHERE CURP = ?";
@@ -31,8 +33,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo json_encode(["success" => false, "message" => "El CURP ya existe, no se permiten duplicados"]);
     } else {
         // El CURP es único, procede con la inserción
-        $sentencia = $mysqli->prepare("INSERT INTO usuarios (NOMBRE, DEPENDENCIA, DISTINCION, CATEGORIA, CURP, ASISTENCIA, ASISTENCIA_ACOMPANIANTE) VALUES (?,?,?,?,?,?,?)");
-        $sentencia->bind_param("siiisii", $nombre, $dependencia, $distincion, $categoria, $curp, $asistencia, $asistenciaA);
+        $sentencia = $mysqli->prepare("INSERT INTO usuarios (NOMBRE, DEPENDENCIA, DISTINCION, CATEGORIA, CURP, ASISTENCIA, ASISTENCIA_ACOMPANIANTE, NOMBRE_ACOMPANIANTE, IMPLEMENTO) VALUES (?,?,?,?,?,?,?,?,?)");
+        $sentencia->bind_param("siiisiiss", $nombre, $dependencia, $distincion, $categoria, $curp, $asistencia, $asistenciaA, $nombreA, $implemento);
 
         if ($sentencia->execute()) {
             echo json_encode(["success" => true, "message" => "Usuario creado con éxito"]);

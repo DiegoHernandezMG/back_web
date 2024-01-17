@@ -10,24 +10,33 @@ if ($_SERVER["REQUEST_METHOD"] === "DELETE") {
     // Obtener el ID del usuario a eliminar desde los parámetros de la URL
     $id = $_GET["id"];
 
-    // Consulta SQL para eliminar el usuario por su ID
-    $sql = "DELETE FROM usuarios WHERE ID = ?";
-    
-    $stmt = $mysqli->prepare($sql);
-    $stmt->bind_param("i", $id);
-    
-    if ($stmt->execute()) {
+    // Consulta SQL para verificar si el ID existe en la tabla usuarios
+    $checkSql = "SELECT COUNT(*) FROM usuarios WHERE ID=?";
+    $checkStmt = $mysqli->prepare($checkSql);
+    $checkStmt->bind_param("i", $id);
+    $checkStmt->execute();
+    $result = $checkStmt->get_result();
+    $rowCount = $result->fetch_row()[0];
+    $checkStmt->close();
+
+    if ($rowCount > 0) {
+        // El ID existe en la tabla usuarios, procede con la eliminación
+
+        // Eliminar el usuario de la tabla "usuarios" usando su ID
+        $deleteUsuarioSql = "DELETE FROM usuarios WHERE ID = ?";
+        $stmtDeleteUsuario = $mysqli->prepare($deleteUsuarioSql);
+        $stmtDeleteUsuario->bind_param("i", $id);
+        $stmtDeleteUsuario->execute();
+        $stmtDeleteUsuario->close();
+
         // Eliminación exitosa
         header("HTTP/1.1 200 OK");
-        echo json_encode(["success" => true, "message" => "Usuario eliminado con éxito"]);
+        echo json_encode(["success" => true, "message" => "Registro eliminado con éxito"]);
     } else {
-        // Error en la eliminación
-        header("HTTP/1.1 500 Internal Server Error");
-        echo json_encode(["success" => false, "message" => "Error al eliminar el usuario"]);
+        // El ID no existe en la base de datos
+        header("HTTP/1.1 404 Not Found");
+        echo json_encode(["success" => false, "message" => "El usuario con el ID proporcionado no existe"]);
     }
-
-    $stmt->close();
-    $mysqli->close();
 } else {
     // Método HTTP no permitido
     header("HTTP/1.1 405 Method Not Allowed");
