@@ -184,6 +184,7 @@ function Table() {
         const { ID, ...rest } = _user;
 
         const usuario = {
+          id: rest.ID,
           nombre: rest.NOMBRE,
           dependencia: rest.DEPENDENCIA,
           distincion: rest.DISTINCION,
